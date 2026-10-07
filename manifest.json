@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "De-IA-tiseur",
+  "version": "1.0",
+  "description": "Supprime les blocs de recherche générés par IA sur Google et DuckDuckGo.",
+  "permissions": [
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.google.com/search*",
+        "https://www.google.fr/search*",
+        "https://duckduckgo.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
