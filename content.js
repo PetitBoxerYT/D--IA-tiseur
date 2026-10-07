@@ -1,10 +1,27 @@
-function removeAIElements() {
-  const aiBlocks = document.querySelectorAll('div[data-attrid="wa:/description"], .ai-overview-container');
-  aiBlocks.forEach(block => {
-    block.remove();
+function removeGoogleAI() {
+  const selectors = [
+    'div[data-attrid="wa:/description"]',
+  ];
+
+  selectors.forEach(selector => {
+    document.querySelectorAll(selector).forEach(element => {
+      element.remove();
+    });
   });
 }
 
-removeAIElements();
-const observer = new MutationObserver(removeAIElements);
-observer.observe(document.body, { childList: true, subtree: true });
+window.addEventListener('DOMContentLoaded', removeGoogleAI);
+
+const observer = new MutationObserver((mutations) => {
+  for (let mutation of mutations) {
+    if (mutation.addedNodes.length > 0) {
+      removeGoogleAI();
+      break;
+    }
+  }
+});
+
+observer.observe(document.body, {
+  childList: true,
+  subtree: true
+});
