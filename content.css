@@ -1,0 +1,5 @@
+div[data-attrid="wa:/description"],
+div:has(> .ai-overview-container),
+.Jgptnc {
+  display: none !important;
+}
